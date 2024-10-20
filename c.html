@@ -9945,10 +9945,10 @@ public class CacheStatisticsService {
     private CacheManager cacheManager;
 
     public void printCacheStats(String cacheName) {
-        Cache<?, ?> cache = cacheManager.getCache(cacheName).getNativeCache();
+        Cache>?, ?> cache = cacheManager.getCache(cacheName).getNativeCache();
         
         if (cache instanceof com.github.benmanes.caffeine.cache.Cache) {
-            com.github.benmanes.caffeine.cache.Cache<?, ?> caffeineCache = (com.github.benmanes.caffeine.cache.Cache<?, 
+            com.github.benmanes.caffeine.cache.Cache>?, ?> caffeineCache = (com.github.benmanes.caffeine.cache.Cache>?, 
 ?>) cache;
             System.out.println("Cache Stats:");
             System.out.println("Hit Count: " + caffeineCache.stats().hitCount());
@@ -15571,7 +15571,7 @@ import org.springframework.stereotype.Component;
 public class CustomErrorHandler implements RabbitListenerErrorHandler {
 
     @Override
-    public Object handleError(Message message, org.springframework.messaging.Message<?> 
+    public Object handleError(Message message, org.springframework.messaging.Message>?> 
 message1, Exception e) {
         // Custom error handling logic
         System.err.println("Error processing message: " + message.getBody());
@@ -15592,7 +15592,7 @@ import org.springframework.stereotype.Component;
 public class CustomKafkaErrorHandler implements KafkaListenerErrorHandler {
 
     @Override
-    public Object handleError(Message<?> message, org.springframework.messaging.Message<?> 
+    public Object handleError(Message>?> message, org.springframework.messaging.Message>?> 
 message1, Exception e) {
         // Custom error handling logic
         System.err.println("Error processing message: " + message1.getPayload());
@@ -18906,9 +18906,9 @@ public @interface ValidCustom {
 
     String message() default "Invalid value";
 
-    Class<?>[] groups() default {};
+    Class>?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+    Class>? extends Payload>[] payload() default {};
 }
 ```
 
@@ -18992,7 +18992,7 @@ import org.springframework.validation.Validator;
 public class UserValidator implements Validator {
 
     @Override
-    public boolean supports(Class<?> clazz) {
+    public boolean supports(Class>?> clazz) {
         return User.class.equals(clazz);
     }
 
@@ -19238,9 +19238,9 @@ public @interface ValidCustom {
 
     String message() default "Invalid value";
 
-    Class<?>[] groups() default {};
+    Class>?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+    Class>? extends Payload>[] payload() default {};
 }
 ```
 
@@ -19647,9 +19647,9 @@ import java.lang.annotation.Target;
 public @interface ValidDateRange {
     String message() default "Invalid date range";
 
-    Class<?>[] groups() default {};
+    Class>?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+    Class>? extends Payload>[] payload() default {};
 }
 ```
 
@@ -19813,9 +19813,9 @@ public @interface ValidPassword {
     String message() default "Password must contain at least one uppercase letter, 
 one lowercase letter, one digit, and one special character";
 
-    Class<?>[] groups() default {};
+    Class>?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+    Class>? extends Payload>[] payload() default {};
 }
 ```
 
@@ -26338,7 +26338,7 @@ import org.testcontainers.containers.MySQLContainer;
 @ActiveProfiles("test")
 public abstract class BaseIntegrationTest {
 
-    static MySQLContainer<?> mysqlContainer = new MySQLContainer<>("mysql:8.0")
+    static MySQLContainer>?> mysqlContainer = new MySQLContainer<>("mysql:8.0")
             .withDatabaseName("testdb")
             .withUsername("test")
             .withPassword("test");
@@ -29272,10 +29272,10 @@ The `SmartApplicationListener` interface extends `ApplicationListener`, and it i
 methods for filtering events and setting execution order:
 
 #### Key Methods:
-- **`supportsEventType(Class<? extends ApplicationEvent> eventType)`**: Determines 
+- **`supportsEventType(Class>? extends ApplicationEvent> eventType)`**: Determines 
 whether the listener supports the event type being handled. You can use this to filter 
 which types of events the listener should respond to.
-- **`supportsSourceType(Class<?> sourceType)`**: Determines whether the listener 
+- **`supportsSourceType(Class>?> sourceType)`**: Determines whether the listener 
 should handle the event based on its source type (the object that triggered the event).
 
 - **`onApplicationEvent(ApplicationEvent event)`**: This is where the actual event 
@@ -29300,14 +29300,14 @@ public class OrderCreatedSmartListener implements SmartApplicationListener, Orde
 {
 
     @Override
-    public boolean supportsEventType(Class<? extends ApplicationEvent> eventType) 
+    public boolean supportsEventType(Class>? extends ApplicationEvent> eventType) 
 {
         // Only listen for OrderCreatedEvent
         return OrderCreatedEvent.class.isAssignableFrom(eventType);
     }
 
     @Override
-    public boolean supportsSourceType(Class<?> sourceType) {
+    public boolean supportsSourceType(Class>?> sourceType) {
         // Only handle events where the source is of type OrderService
         return OrderService.class.isAssignableFrom(sourceType);
     }
@@ -29469,13 +29469,13 @@ import org.springframework.stereotype.Component;
 public class ConditionalOrderListener implements SmartApplicationListener {
 
     @Override
-    public boolean supportsEventType(Class<? extends ApplicationEvent> eventType) 
+    public boolean supportsEventType(Class>? extends ApplicationEvent> eventType) 
 {
         return OrderCreatedEvent.class.isAssignableFrom(eventType);
     }
 
     @Override
-    public boolean supportsSourceType(Class<?> sourceType) {
+    public boolean supportsSourceType(Class>?> sourceType) {
         return OrderService.class.isAssignableFrom(sourceType);
     }
 
@@ -38601,9 +38601,9 @@ public class CustomRetryPolicy extends SimpleRetryPolicy {
         super(3, createRetryableExceptions());
     }
 
-    private static Map<Class<? extends Throwable>, Boolean> createRetryableExceptions() 
+    private static Map<Class>? extends Throwable>, Boolean> createRetryableExceptions() 
 {
-        Map<Class<? extends Throwable>, Boolean> exceptions = new HashMap<>();
+        Map<Class>? extends Throwable>, Boolean> exceptions = new HashMap<>();
         exceptions.put(SomeException.class, true);
         return exceptions;
     }
@@ -40321,7 +40321,7 @@ import org.testcontainers.utility.DockerImageName;
 
 public class ApiServiceTest {
 
-    private static GenericContainer<?> mockApiContainer;
+    private static GenericContainer>?> mockApiContainer;
 
     @BeforeEach
     static void setUp() {
@@ -40656,7 +40656,7 @@ import org.testcontainers.containers.MySQLContainer;
 
 public class MyIntegrationTest {
 
-    static MySQLContainer<?> mysqlContainer = new MySQLContainer<>("mysql:latest");
+    static MySQLContainer>?> mysqlContainer = new MySQLContainer<>("mysql:latest");
 
 
     @BeforeAll
@@ -41803,7 +41803,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MyServiceIntegrationTest {
 
     // Define the PostgreSQL container
-    static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest")
+    static PostgreSQLContainer>?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest")
 
             .withDatabaseName("testdb")
             .withUsername("test")
@@ -43167,14 +43167,14 @@ import java.util.Collection;
 public class RebalanceListener implements ConsumerRebalanceListener {
 
     @Override
-    public void onPartitionsRevoked(Consumer<?, ?> consumer, Collection<TopicPartition> 
+    public void onPartitionsRevoked(Consumer>?, ?> consumer, Collection<TopicPartition> 
 partitions) {
         System.out.println("Partitions revoked: " + partitions);
         // Handle any necessary state cleanup here
     }
 
     @Override
-    public void onPartitionsAssigned(Consumer<?, ?> consumer, Collection<TopicPartition> 
+    public void onPartitionsAssigned(Consumer>?, ?> consumer, Collection<TopicPartition> 
 partitions) {
         System.out.println("Partitions assigned: " + partitions);
         // Handle any necessary state restoration here
@@ -43356,7 +43356,7 @@ import org.springframework.stereotype.Component;
 public class CustomErrorHandler implements ErrorHandler {
 
     @Override
-    public void handle(Exception thrownException, ConsumerRecord<?, ?> data) {
+    public void handle(Exception thrownException, ConsumerRecord>?, ?> data) {
         // Log the error
         System.err.println("Error occurred for message: " + data + ", Error: " + 
 thrownException.getMessage());
@@ -43590,9 +43590,9 @@ import java.util.Map;
 @Component
 public class KafkaLagEndpoint {
 
-    private final ConsumerFactory<?, ?> consumerFactory;
+    private final ConsumerFactory>?, ?> consumerFactory;
 
-    public KafkaLagEndpoint(ConsumerFactory<?, ?> consumerFactory) {
+    public KafkaLagEndpoint(ConsumerFactory>?, ?> consumerFactory) {
         this.consumerFactory = consumerFactory;
     }
 
@@ -48862,7 +48862,7 @@ public class RetryConfig {
 
         // Configure retry policy
         SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
-        Map<Class<? extends Throwable>, Boolean> retryableExceptions = new HashMap<>();
+        Map<Class>? extends Throwable>, Boolean> retryableExceptions = new HashMap<>();
 
         retryableExceptions.put(RuntimeException.class, true);
         retryPolicy.setPolicy(retryableExceptions);
@@ -49285,7 +49285,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @EnableJms
 public class MessageIntegrationTest {
 
-    static GenericContainer<?> activeMqContainer = new GenericContainer<>(DockerImageName.parse("rmohr/activemq:latest"))
+    static GenericContainer>?> activeMqContainer = new GenericContainer<>(DockerImageName.parse("rmohr/activemq:latest"))
 
             .withExposedPorts(61616, 8161);
 
@@ -52944,3 +52944,6 @@ How do you test reactive components in Spring Boot?
 How do you handle errors in reactive programming with Spring Boot?
 How do you implement event-driven architectures using reactive programming in Spring 
 Boot?
+</pre>
+</body>
+</html>
