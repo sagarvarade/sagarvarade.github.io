@@ -633,19 +633,6 @@ spring.datasource.password=secret
 You can also override these properties by providing an external `application.properties` 
 file or using environment variables.
 
-Would you like more details on deploying to a specific server or configuring certain 
-properties?
-
-¹: [Spring Boot Externalized Configuration](https://docs.spring.io/spring-boot/reference/features/external-config.html)
-
-²: [Deploy Spring Boot Applications on External Tomcat Server](https://www.java4s.com/spring-boot-tutorials/how-to-deploy-spring-boot-applications-on-external-tomcat-server/)
-
-
-
-
-
-
-
 
 
 
@@ -729,12 +716,6 @@ public class Profile {
 
 In this setup, deleting a `User` will also delete the associated `Profile` due to 
 the `CascadeType.ALL` and `orphanRemoval = true` settings¹².
-
-Would you like more details on configuring these annotations or any other aspect 
-of JPA and Hibernate?
-
-¹: [Baeldung](https://www.baeldung.com/jpa-cascade-types)
-²: [Thorben Janssen](https://thorben-janssen.com/hibernate-tips-how-to-delete-child-entities/)
 
 
 
@@ -897,17 +878,6 @@ Using thread pools helps in managing system resources more effectively, reducing
 the overhead of thread creation and destruction, and improving the overall performance 
 of the application¹².
 
-Do you have a specific use case in mind where you want to implement a thread pool?
-
-
-¹: [Baeldung](https://www.baeldung.com/thread-pool-java-and-guava)
-²: [Javatpoint](https://www.javatpoint.com/java-thread-pool)
-
-
-
-
-
-
 
 
 
@@ -1004,15 +974,6 @@ public class PrototypeBean {
 
 In this setup, every time `doSomething()` is called on `SingletonBean`, a new instance 
 of `PrototypeBean` is created and used¹².
-
-Would you like more details on any of these approaches or have a specific scenario 
-in mind?
-
-¹: [Baeldung](https://www.baeldung.com/spring-inject-prototype-bean-into-singleton)
-
-²: [HowToDoInJava](https://howtodoinjava.com/spring-core/scoped-bean-injection-problem/)
-
-
 
 
 
@@ -1202,17 +1163,6 @@ dependencies up to date⁴.
 
 By following these best practices, you can significantly enhance the security of 
 your APIs and protect your applications from potential threats.
-
-Do you have any specific concerns or scenarios in mind regarding API security?
-
-¹: [Cloudflare](https://www.cloudflare.com/learning/security/api/what-is-api-security/)
-
-²: [F5](https://www.f5.com/labs/learning-center/securing-apis-10-best-practices-for-keeping-your-data-and-infrastructure-safe)
-
-³: [Red Hat](https://www.redhat.com/en/topics/security/api-security)
-⁴: [Pynt](https://www.pynt.io/learning-hub/api-security-guide/api-security-best-practices)
-
-
 
 
 
@@ -1456,13 +1406,6 @@ public List<User> findAllActiveUsers() {
 
 These methods provide flexibility depending on your specific needs for querying the 
 database in a Spring application¹²³.
-
-Do you have a specific type of query or database operation in mind?
-
-¹: [Baeldung](https://www.baeldung.com/spring-data-jpa-query)
-²: [Spring Data JPA Documentation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods)
-
-³: [Bezkoder](https://www.bezkoder.com/spring-jpa-query/)
 
 
 
@@ -2056,15 +1999,6 @@ In this example:
 
 These methods help ensure that only unique rows remain in your table¹².
 
-Do you have a specific table or scenario in mind where you need to remove duplicates?
-
-
-¹: [SQLShack](https://www.sqlshack.com/different-ways-to-sql-delete-duplicate-rows-from-a-sql-table/)
-
-²: [LearnSQL](https://learnsql.com/cookbook/how-to-delete-duplicate-rows-in-a-table-in-sql-server/)
-
-
-
 
 
 
@@ -2108,20 +2042,6 @@ myPromise.then((message) => {
 
 This pattern allows you to handle asynchronous operations in a more readable and 
 manageable way compared to traditional callback functions¹².
-
-Do you have a specific use case in mind for using Promises?
-
-¹: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-
-²: [W3Schools](https://www.w3schools.com/Js/js_promise.asp)
-
-
-
-
-
-
-
-
 
 
 
@@ -2202,12 +2122,6 @@ In this example, `MyBean` will only be initialized if the condition specified in
 These methods provide flexibility in controlling when and how beans are initialized 
 in your Spring application. Do you have a specific scenario or requirement in mind 
 for controlling bean initialization?
-
-¹: [Baeldung](https://www.baeldung.com/spring-lazy-annotation)
-²: [Spring Framework Documentation](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-lazy-init.html)
-
-³: [Baeldung](https://www.baeldung.com/spring-conditional-annotations)
-
 
 
 
@@ -2310,13 +2224,6 @@ Output: Result: 144
 
 In this example, the `multiply` function multiplies two integers, and the `square` 
 function squares the result of the multiplication¹².
-
-Would you like to see more examples or details on how to use `BiFunction` in specific 
-scenarios?
-
-¹: [Baeldung](https://www.baeldung.com/java-bifunction-interface)
-²: [Javatpoint](https://www.javatpoint.com/bifunction-java-8)
-
 
 
 Handling exceptions in lambda expressions can be tricky because lambda expressions 
@@ -2424,16 +2331,6 @@ public class ExceptionHandling {
 
 These methods help maintain the conciseness of lambda expressions while effectively 
 handling exceptions¹²³.
-
-Do you have a specific scenario or type of exception you need to handle in your lambda 
-expressions?
-
-¹: [Baeldung](https://www.baeldung.com/java-lambda-exceptions)
-²: [DZone](https://dzone.com/articles/mastering-exception-handling-in-java-lambda-expres)
-
-³: [HelloKoding](https://hellokoding.com/exception-handling-in-java-lambda/)
-
-
 
 
 
